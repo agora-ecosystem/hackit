@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2022 DIMA/TU-Berlin
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <groupId>de.tu-berlin.dima</groupId>
+  <artifactId>hackit</artifactId>
+  <packaging>pom</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>hackit</name>
+  <description>Hackit is debugger for the big data processing platforms</description>
+
+  <organization>
+    <name>Technische Universität Berlin</name>
+    <url>https://www.tu.berlin</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+      <comments>
+        Agora is a development effort undergoing at DIMA/TU-Berlin.
+
+        While development status is not necessarily a reflection of the completeness or stability
+        of the code.
+      </comments>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/agora-ecosystem/hack-it</connection>
+    <developerConnection>scm:git:https://github.com/agora-ecosystem/hack-it</developerConnection>
+    <url>https://github.com/agora-ecosystem/hack-it</url>
+    <tag>hackit-core-0.0.1</tag>
+  </scm>
+
+  <issueManagement>
+    <system>Github Issues</system>
+    <url>https://github.com//agora-ecosystem/hack-it/issues/</url>
+  </issueManagement>
+
+  <properties>
+    <java.version>11</java.version>
+    <source.level>11</source.level>
+    <encoding>UTF-8</encoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.root>${basedir}</project.root>
+    <dist.id>${project.artifactId}</dist.id>
+    <resources.documentation>${project.build.directory}/javadoc</resources.documentation>
+
+    <!-- Timestamp for the reproducible builds -->
+    <project.build.outputTimestamp>2022-12-01T00:00:00Z</project.build.outputTimestamp>
+
+    <junit5.version>5.9.1</junit5.version>
+    <log4j.version>2.19.0</log4j.version>
+    <mockito.version>4.9.0</mockito.version>
+    <assertj.version>3.23.1</assertj.version>
+
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Testing -->
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${junit5.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- Logging -->
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-bom</artifactId>
+        <version>${log4j.version}</version>
+        <scope>import</scope>
+        <type>pom</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.0.0</version>
+          <executions>
+            <execution>
+              <id>enforce-maven-version</id>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <requireMavenVersion>
+                    <version>[3.6.0,)</version><!--Maven version >= 3.6.0 -->
+                  </requireMavenVersion>
+                </rules>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <source>${source.level}</source>
+            <target>${source.level}</target>
+            <compilerArgument>-Xlint:all</compilerArgument>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+            <!-- Original answer -->
+            <compilerArgument>-parameters</compilerArgument>
+            <!-- Or, if you use the plugin version >= 3.6.2 -->
+            <parameters>true</parameters>
+            <testCompilerArgument>-parameters</testCompilerArgument>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.3.1</version>
+          <configuration>
+            <locale>en_US</locale>
+            <breakiterator>true</breakiterator>
+            <header>${project.name}</header>
+            <source>${source.level}</source>
+            <quiet>true</quiet>
+            <javadocDirectory>${resources.documentation}/</javadocDirectory>
+            <overview>${resources.documentation}/overview.html</overview>
+            <!-- copies doc-files subdirectory which contains image resources -->
+            <docfilessubdirs>true</docfilessubdirs>
+            <additionalOptions>
+              <additionalOption>-Xdoclint:none</additionalOption>
+            </additionalOptions>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.rat</groupId>
+        <artifactId>apache-rat-plugin</artifactId>
+        <version>0.13</version>
+        <executions>
+          <execution>
+            <id>license-check</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <!-- Right now this would fail the build as not all files have Apache headers -->
+          <useMavenDefaultExcludes>true</useMavenDefaultExcludes>
+          <!--
+             Make rat output the files with missing licensed directly into the
+             build output (This way we don't have to look into the rat.txt to find
+             out which ones)
+         -->
+          <consoleOutput>true</consoleOutput>
+          <excludes>
+            <!-- Git related files -->
+            <exclude>**/.git/**</exclude>
+            <exclude>**/.gitignore</exclude>
+            <exclude>**/.gitmodules</exclude>
+            <exclude>**/.github/actions/**</exclude>
+
+            <!-- Maven related files -->
+            <exclude>**/target/**</exclude>
+
+            <!-- Eclipse related files -->
+            <exclude>**/.project</exclude>
+            <exclude>**/.settings/**</exclude>
+            <exclude>**/.classpath</exclude>
+            <exclude>**/.factorypath</exclude>
+
+            <!-- IntelliJ related files -->
+            <exclude>**/.idea/**</exclude>
+            <exclude>**/*.iml</exclude>
+
+            <!-- md files related files -->
+            <exclude>**/*.md</exclude>
+
+            <!-- script agora files -->
+            <exclude>bin/**/*</exclude>
+
+            <!-- maven executor files -->
+            <exclude>mvnw*</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <!-- Test Dependencies INIT-->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-junit-jupiter</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Test Dependencies END -->
+  </dependencies>
+
+  <modules>
+    <module>hackit-core</module>
+  </modules>
+</project>
