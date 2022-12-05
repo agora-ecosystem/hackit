@@ -48,7 +48,15 @@ public abstract class HackitConfiguration{
   public HackitConfiguration(){
     Configurations configs = new Configurations();
     try {
-      this.configuration = configs.properties(new File(this.name()));
+      this.configuration = configs.properties(
+        new File(
+            String.format(
+                "%s.%s",
+                this.name(),
+                this.extension()
+            )
+        )
+      );
 
     } catch (ConfigurationException cex) {
       throw new RuntimeException(cex);
@@ -62,6 +70,15 @@ public abstract class HackitConfiguration{
    * @return String that represent the filename that contains the properties.
    */
   public abstract String name();
+
+  /**
+   * extension return the type of file where the configuration is allocated
+   *
+   * @return String that represent the extension for the file properties.
+   */
+  protected String extension(){
+    return "properties";
+  }
 
   /**
    * wrap for {@link ImmutableConfiguration#containsKey(String)}
