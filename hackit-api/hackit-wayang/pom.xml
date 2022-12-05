@@ -5,19 +5,10 @@
     <artifactId>hackit</artifactId>
     <groupId>de.tuberlin.dima</groupId>
     <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../pom.xml</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>hackit-api</artifactId>
-
-  <properties>
-    <scala.majorVersion>2.13</scala.majorVersion>
-    <scala.minorVersion>10</scala.minorVersion>
-    <spark.version>3.3.1</spark.version>
-  </properties>
-
-  <modules>
-    <module>hackit-spark</module>
-  </modules>
+  <artifactId>hackit-wayang</artifactId>
 
   <dependencies>
     <dependency>
@@ -26,4 +17,5 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
+
 </project>
