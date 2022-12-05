@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
 
 
-  <groupId>de.tu-berlin.dima</groupId>
+  <groupId>de.tuberlin.dima</groupId>
   <artifactId>hackit</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>

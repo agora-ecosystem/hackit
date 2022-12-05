@@ -3,15 +3,23 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <artifactId>hackit</artifactId>
-    <groupId>de.tu-berlin.dima</groupId>
+    <groupId>de.tuberlin.dima</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.tu-berlin.dima</groupId>
+  <groupId>de.tuberlin.dima</groupId>
   <artifactId>hackit-shipper</artifactId>
   <packaging>pom</packaging>
   <name>Archetype - shipper</name>
   <url>http://maven.apache.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.tuberlin.dima</groupId>
+      <artifactId>hackit-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
 
   <modules>
     <module>hachit-shipper-kafka</module>

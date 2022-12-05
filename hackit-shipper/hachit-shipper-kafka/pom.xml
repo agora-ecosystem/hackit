@@ -3,11 +3,28 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <artifactId>hackit-shipper</artifactId>
-    <groupId>de.tu-berlin.dima</groupId>
+    <groupId>de.tuberlin.dima</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>hachit-shipper-kafka</artifactId>
-  <name>Archetype - hachit-shipper-kafka</name>
-  <url>http://maven.apache.org</url>
+
+  <properties>
+    <kafka.version>3.3.1</kafka.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>${kafka.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.12.0</version>
+    </dependency>
+  </dependencies>
+
+
 </project>
