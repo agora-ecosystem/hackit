@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>hackit-api</artifactId>
+    <groupId>de.tuberlin.dima</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>hackit-spark</artifactId>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.tuberlin.dima</groupId>
+      <artifactId>hackit-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- Start Dependency of Spark-->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.majorVersion}.${scala.minorVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${scala.majorVersion}</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+    <!-- End dependency of Spark-->
+  </dependencies>
+</project>

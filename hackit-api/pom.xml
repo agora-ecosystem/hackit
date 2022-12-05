@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>hackit</artifactId>
+    <groupId>de.tuberlin.dima</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>hackit-api</artifactId>
+
+  <properties>
+    <scala.majorVersion>2.13</scala.majorVersion>
+    <scala.minorVersion>10</scala.minorVersion>
+    <spark.version>3.3.1</spark.version>
+  </properties>
+
+  <modules>
+    <module>hackit-spark</module>
+  </modules>
+
+</project>

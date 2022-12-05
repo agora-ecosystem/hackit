@@ -258,5 +258,6 @@
     <module>hackit-core</module>
     <module>hackit-shipper</module>
     <module>hackit-util</module>
+    <module>hackit-api</module>
   </modules>
 </project>
