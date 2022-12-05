@@ -2,18 +2,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
-    <artifactId>hackit</artifactId>
+    <artifactId>hackit-shipper</artifactId>
     <groupId>de.tu-berlin.dima</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>de.tu-berlin.dima</groupId>
-  <artifactId>hackit-shipper</artifactId>
-  <packaging>pom</packaging>
-  <name>Archetype - shipper</name>
+  <artifactId>hachit-shipper-kafka</artifactId>
+  <name>Archetype - hachit-shipper-kafka</name>
   <url>http://maven.apache.org</url>
-
-  <modules>
-    <module>hachit-shipper-kafka</module>
-  </modules>
 </project>
