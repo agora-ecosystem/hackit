@@ -1,6 +1,6 @@
 # Hack-it The Debugger for Big Data
 
-[![Build](https://github.com/agora-ecosystem/hack-it/actions/workflows/build.yaml/badge.svg)](https://github.com/agora-ecosystem/hack-it/actions/workflows/build.yaml)
+[![Build](https://github.com/agora-ecosystem/hackit/actions/workflows/build.yaml/badge.svg)](https://github.com/agora-ecosystem/hackit/actions/workflows/build.yaml)
 
 
 The debugger for Big Data 
