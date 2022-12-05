@@ -18,7 +18,8 @@
 package de.tuberlin.dima.hackit.core.action;
 
 /**
- * HaltJob in an {@link Action} which the behaviour of stopping the job processing partially or complete
+ * HaltJob in an {@link Action} which the behaviour of stopping the job
+ * processing partially or complete
  */
 public interface HaltJob extends Action{
 

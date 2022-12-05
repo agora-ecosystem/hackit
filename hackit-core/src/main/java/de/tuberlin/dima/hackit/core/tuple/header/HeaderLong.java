@@ -18,7 +18,8 @@
 package de.tuberlin.dima.hackit.core.tuple.header;
 
 /**
- * HeaderLong extend {@link Header} just a simple implementation of correlative number
+ * HeaderLong extend {@link Header} just a simple implementation of
+ * correlative number
  */
 public class HeaderLong extends Header<Long> {
 
@@ -54,7 +55,8 @@ public class HeaderLong extends Header<Long> {
      * Construct where is possible to define the identifier and child number
      *
      * @param id is the identifier that it will be used by the {@link Header}
-     * @param child is the identifier as child of the original element giving by <code>id</code>
+     * @param child is the identifier as child of the original element giving
+     *              by <code>id</code>
      */
     public HeaderLong(Long id, int child) {
         super(id, child);

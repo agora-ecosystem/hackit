@@ -17,15 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * PauseTag is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
- * where is need to pause all the process and wait for a signal that tell what to do, either kill the process or continues
+ * PauseTag is the {@link HackitTag} that identify the {@link HackitTuple}
+ * where is need to pause all the process and wait for a signal that tell
+ * what to do, either kill the process or continues
  */
 public class PauseTag extends HackitTag  {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static PauseTag seed = null;
 

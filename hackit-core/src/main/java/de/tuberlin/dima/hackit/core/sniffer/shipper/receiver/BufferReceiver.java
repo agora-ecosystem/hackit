@@ -17,12 +17,14 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.shipper.receiver;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
- * BufferReceiver is component where the element getted by the {@link Receiver} are stored waiting for be consumed
+ * BufferReceiver is component where the element get by the {@link Receiver}
+ * are stored waiting for be consumed
  *
  * @param <T> type of the element that it will receive
  */
@@ -31,12 +33,13 @@ public class BufferReceiver<T> implements Serializable {
 
     //TODO implement the doble buffering
     /**
-     * queue is a {@link Queue} where the element are storage waiting to be consumed
+     * queue is a {@link Queue} where the element are storage waiting to be
+     * consumed
      */
     private transient Queue<T> queue;
 
     /**
-     * Start the Buffer to be enable to get new {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
+     * Start the Buffer to be enables to get new {@link HackitTuple}
      *
      * @return True if the Buffer start without problem, False in other cases
      */
@@ -59,7 +62,7 @@ public class BufferReceiver<T> implements Serializable {
     /**
      * Insert a new value on the {@link BufferReceiver}
      *
-     * @param value to be insert on the buffer
+     * @param value to be inserted on the buffer
      */
     public void put(T value){
         if(this.queue == null){

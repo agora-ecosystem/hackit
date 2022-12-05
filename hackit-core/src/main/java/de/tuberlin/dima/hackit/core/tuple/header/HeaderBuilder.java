@@ -17,8 +17,11 @@
  */
 package de.tuberlin.dima.hackit.core.tuple.header;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * HeaderBuilder it the generator of {@link Header} to one kind of {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
+ * HeaderBuilder it the generator of {@link Header} to one kind of
+ * {@link HackitTuple}
  */
 public class HeaderBuilder {
 

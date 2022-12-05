@@ -17,11 +17,12 @@
  */
 package de.tuberlin.dima.hackit.core.id.generator;
 
+import de.tuberlin.dima.hackit.core.id.HackitIDGenerator;
 import java.time.Instant;
-import org.apache.wayang.plugin.hackit.core.identifiers.HackitIDGenerator;
 
 /**
- * SnowflackID is and implementation of <a href="https://en.wikipedia.org/wiki/Snowflake_ID">this</a>
+ * SnowflackID is and implementation of
+ * <a href="https://en.wikipedia.org/wiki/Snowflake_ID">this</a>
  */
 public class SnowflakeID extends HackitIDGenerator<Integer, Long> {
     private static final int TOTAL_BITS = 64;
@@ -44,7 +45,13 @@ public class SnowflakeID extends HackitIDGenerator<Integer, Long> {
      */
     public SnowflakeID(int nodeId) {
         if(nodeId < 0 || nodeId > maxNodeId) {
-            throw new IllegalArgumentException(String.format("NodeId must be between %d and %d", 0, maxNodeId));
+            throw new IllegalArgumentException(
+                String.format(
+                    "NodeId must be between %d and %d",
+                    0,
+                    maxNodeId
+                )
+            );
         }
         this.identify_process = nodeId;
     }
@@ -62,8 +69,8 @@ public class SnowflakeID extends HackitIDGenerator<Integer, Long> {
     }
 
     /**
-     * Generate the next ID, this method is synchronized because several {@link Thread} could exist
-     * on one unique worker.
+     * Generate the next ID, this method is synchronized because several
+     * {@link Thread} could exist on one unique worker.
      *
      * @return the new ID
      */
@@ -103,8 +110,8 @@ public class SnowflakeID extends HackitIDGenerator<Integer, Long> {
     }
 
     /**
-     * Block and wait till next millisecond, this is used when the number of elements of one epoch
-     * overflow the max possible number of one epoch
+     * Block and wait till next millisecond, this is used when the number of
+     * elements of one epoch overflow the max possible number of one epoch
      *
      * @param currentTimestamp
      *

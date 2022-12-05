@@ -17,32 +17,33 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.shipper.sender;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 
 /**
- * Sender is the component that send the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple} out from
+ * Sender is the component that send the {@link HackitTuple} out from
  * the main pipeline
  *
- * @param <T> type of the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple} that will be send out
+ * @param <T> type of the {@link HackitTuple} that will be sent out
  */
 public interface Sender<T> extends Serializable {
 
     /**
-     * Start the service or connect to the server where the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
+     * Start the service or connect to the server where the {@link HackitTuple}
      * need to be sended it
      */
     void init();
 
     /**
-     * Place in a buffer or send inmediatly the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple} this will
-     * depends on the configuration
+     * Place in a buffer or send inmediatly the {@link HackitTuple} this will
+     * depend on the configuration
      *
-     * @param value to be send out
+     * @param value to be sent out
      */
     void send(T value);
 
     /**
-     * Terminate the connection and clean the buffers if is need
+     * Terminate the connection and clean the buffers if is needs
      */
     void close();
 }

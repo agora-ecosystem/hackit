@@ -18,8 +18,9 @@
 package de.tuberlin.dima.hackit.core.tagger.wrapper.template;
 
 /**
- * FunctionTemplate is the template that provide the abstraction to work with Transformation operations and also
- * allows to wrap some function made by the user.
+ * FunctionTemplate is the template that provide the abstraction to work with
+ * Transformation operations and also allows to wrap some function made by
+ * the user.
  *
  * @param <I> Input type of the original Function
  * @param <O> Output type of the original function

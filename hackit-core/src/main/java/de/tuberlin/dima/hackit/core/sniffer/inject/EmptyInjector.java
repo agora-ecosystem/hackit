@@ -17,14 +17,15 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.inject;
 
+import de.tuberlin.dima.hackit.core.iterator.ElementPlusIterator;
 import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.StreamSupport;
-import org.apache.wayang.plugin.hackit.core.iterator.ElementPlusIterator;
 
 /**
- * EmptyInjector is a dummy implementation of the {@link Injector} to show how it need to looks and Inyector implementation
+ * EmptyInjector is a dummy implementation of the {@link Injector} to show how
+ * it needs to looks and Inyector implementation
  *
  * @param <T> type of the element processed.
  */

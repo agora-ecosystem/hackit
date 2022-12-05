@@ -17,13 +17,15 @@
  */
 package de.tuberlin.dima.hackit.core.tagger.wrapper.template;
 
+import de.tuberlin.dima.hackit.core.iterator.HackitIterator;
 import java.util.Iterator;
 
 /**
- * FlatMapTemplate is the template that provide the abstraction to work with Flatmap operations and also
- * allows to wrap some function made by the user.
+ * FlatMapTemplate is the template that provide the abstraction to work with
+ * Flatmap operations and also allows to wrap some function made by the user.
  *
- * FlatMapTemplate generate as output a {@link Iterator} this could be an extension of {@link org.apache.wayang.plugin.hackit.core.iterator.HackitIterator}
+ * FlatMapTemplate generate as output a {@link Iterator} this could be an
+ * extension of {@link HackitIterator}
  *
  * @param <I> Input type of the original Function
  * @param <O> Output type of the original function

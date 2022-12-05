@@ -17,17 +17,20 @@
  */
 package de.tuberlin.dima.hackit.core.tagger.wrapper;
 
-import org.apache.wayang.plugin.hackit.core.tagger.HackitTagger;
-import org.apache.wayang.plugin.hackit.core.tagger.wrapper.template.FunctionTemplate;
-import org.apache.wayang.plugin.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FunctionTemplate;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
+
 
 /**
- * PredicateWrapperHackit is an implementation of {@link FunctionTemplate} where Hackit manage the logic
- * before and after of tagging process, also it perform the unwrap of the tuple to be handle by the
- * original function. The original {@link FunctionTemplate} it an predicate function because return a
- * {@link Boolean}
+ * PredicateWrapperHackit is an implementation of {@link FunctionTemplate} where
+ * Hackit manage the logic before and after of tagging process, also it perform
+ * to unwrap of the tuple to be handles by the original function. The original
+ * {@link FunctionTemplate} it a predicate function because return
+ * a {@link Boolean}
  *
- * @param <IDType> Type of {@link org.apache.wayang.plugin.hackit.core.tuple.header.Header} key of the {@link HackitTuple}
+ * @param <IDType> Type of {@link Header} key of the {@link HackitTuple}
  * @param <I> Input Type of the original Tuple to be evaluated
  */
 public class PredicateWrapperHackit<IDType, I>
@@ -42,7 +45,8 @@ public class PredicateWrapperHackit<IDType, I>
     /**
      * Default Construct
      *
-     * @param function is the predicate that will be Wrapped by the {@link PredicateWrapperHackit}
+     * @param function is the predicate that will be Wrapped by the
+     * {@link PredicateWrapperHackit}
      */
     public PredicateWrapperHackit(FunctionTemplate<I, Boolean> function) {
         this.function = function;

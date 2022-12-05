@@ -17,6 +17,8 @@
  */
 package de.tuberlin.dima.hackit.core.id;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.security.SecureRandom;
@@ -25,7 +27,7 @@ import java.util.Enumeration;
 /**
  * HackitIDGenerator is the base for the generation of ID.
  *
- * {@link org.apache.wayang.plugin.hackit.core.tuple.header.Header} use the ID as and unique identifier of the tuple
+ * {@link Header} use the ID as and unique identifier of the tuple
  *
  * Type parameters:
  *  <N> – the type of Identifier of the process
@@ -34,8 +36,8 @@ import java.util.Enumeration;
 public abstract class HackitIDGenerator<N, O> {
 
     /**
-     * is_address_calculated indicate if the address of the worker it already calculated,
-     * because the calculation could be costly in time.
+     * is_address_calculated indicate if the address of the worker it already
+     * calculated, because the calculation could be costly in time.
      */
     private boolean is_address_calculated = false;
 
@@ -45,9 +47,10 @@ public abstract class HackitIDGenerator<N, O> {
     protected InetAddress address_host;
 
     /**
-     * This is the identifier of the process, task, or machine, depends of the platform
-     * but is use for the generators, normally correspond to an {@link Integer}
-     * */
+     * This is the identifier of the process, task, or machine, depends of the
+     * platform but is use for the generators, normally correspond to an
+     * {@link Integer}
+     */
     protected N identify_process;
 
     /**
@@ -60,7 +63,7 @@ public abstract class HackitIDGenerator<N, O> {
 
     /**
      * Constructor with identifier of the process
-     * @param identify_process identifier it help on the generation of unique ID
+     * @param identify_process identifier it helps on the generation of unique ID
      */
     public HackitIDGenerator(N identify_process) {
         this.identify_process = identify_process;
@@ -68,7 +71,8 @@ public abstract class HackitIDGenerator<N, O> {
     }
 
     /**
-     * Build the address_host from the host information obtained form the context of execution
+     * Build the address_host from the host information obtained form the
+     * context of execution
      */
     protected void getAddress(){
         if( ! this.is_address_calculated ){
@@ -83,7 +87,7 @@ public abstract class HackitIDGenerator<N, O> {
     /**
      * create the worker id depending on the network context information
      *
-     * @return unique number that identifier the worker as unique inside of the cluster
+     * @return unique number that identifier the worker as unique inside the cluster
      */
     protected static int createNodeId() {
         int nodeId;
@@ -107,8 +111,8 @@ public abstract class HackitIDGenerator<N, O> {
     }
 
     /**
-     * Generate an unique ID to every {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}, this could have repetition depending on the
-     * algorithm of generation
+     * Generate a unique ID to every {@link HackitTuple}, this could have
+     * repetition depending on the algorithm of generation
      *
      * @return ID
      */

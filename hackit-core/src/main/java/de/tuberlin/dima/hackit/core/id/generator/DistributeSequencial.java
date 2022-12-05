@@ -17,12 +17,13 @@
  */
 package de.tuberlin.dima.hackit.core.id.generator;
 
-import org.apache.wayang.plugin.hackit.core.identifiers.HackitIDGenerator;
+import de.tuberlin.dima.hackit.core.id.HackitIDGenerator;
 
 /**
  * DistributeSequencial it instance of {@link HackitIDGenerator}.
  *
- * DistributeSequencial asume not parallel job running, and help in small debugs, or single node work
+ * DistributeSequencial asume not parallel job running, and help in small
+ * debugs, or single node work
  */
 public class DistributeSequencial extends HackitIDGenerator<Integer, Long> {
 
@@ -32,9 +33,10 @@ public class DistributeSequencial extends HackitIDGenerator<Integer, Long> {
     long current = 0;
 
     /**
-     * it add 1 to current and assign the previous number to the ID
+     * it adds 1 to current and assign the previous number to the ID
      *
-     * @return long that represent the ID, this could have repetition on parallel processing
+     * @return long that represent the ID, this could have repetition on
+     * parallel processing
      */
     @Override
     public Long generateId() {

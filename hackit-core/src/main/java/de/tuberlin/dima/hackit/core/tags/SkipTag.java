@@ -17,16 +17,19 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.sniffer.HackitSniffer;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * SkipTag is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
- * that not need to be process by the {@link org.apache.wayang.plugin.hackit.core.sniffer.HackitSniffer} and
- * also need to be removed and not continues with the process.
+ * SkipTag is the {@link HackitTag} that identify the {@link HackitTuple}
+ * that not need to be process by the {@link HackitSniffer} and also need to
+ * be removed and not continues with the process.
  */
 public class SkipTag extends HackitTag  {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static SkipTag seed = null;
 

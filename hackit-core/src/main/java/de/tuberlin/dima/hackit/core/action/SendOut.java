@@ -18,7 +18,8 @@
 package de.tuberlin.dima.hackit.core.action;
 
 /**
- * SendOut is the {@link Action} that will perform the send to the external debugger.
+ * SendOut is the {@link Action} that will perform the action of send to the
+ * external debugger.
  */
 public interface SendOut extends Action{
 

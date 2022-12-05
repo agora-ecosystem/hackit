@@ -25,16 +25,18 @@ import de.tuberlin.dima.hackit.core.sniffer.shipper.receiver.Receiver;
 import de.tuberlin.dima.hackit.core.sniffer.shipper.sender.Sender;
 import de.tuberlin.dima.hackit.core.sniffer.sniff.Sniff;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.function.Function;
 
 
 /**
- * {@link HackitSniffer} is the one of the main function on Hackit, this function have the resposability of execute the
- * logic of sniff the tuples and apply the logic of {@link #apply(HackitTuple)}
+ * {@link HackitSniffer} is the one of the main function on Hackit, this function
+ * have the resposability of execute the logic of sniff the tuples and apply the
+ * logic of {@link #apply(HackitTuple)}
  *
- * @param <K> type of key that it handle the {@link de.tuberlin.dima.hackit.core.tuple.header.Header}
+ * @param <K> type of key that it handle the {@link Header}
  * @param <T> type that wrapped by {@link HackitTuple}
  * @param <SentType> Type of the element that it will be send out by {@link Sender}
  * @param <SenderObj> Object class of the implementation of {@link Sender}
@@ -88,11 +90,21 @@ HackitSniffer<
 
     /**
      * Construct with the components as parameters
-     * @param hackItInjector {@link Injector} instance that will be use by {@link HackitSniffer} as component
-     * @param actorFunction {@link Actor} instance that will be use by {@link HackitSniffer} as component
-     * @param shipper {@link Shipper} instance that will be use by {@link HackitSniffer} as component
-     * @param hackItSniff {@link Sniff} instance that will be use by {@link HackitSniffer} as component
-     * @param hackItCloner {@link Cloner} instance that will be use by {@link HackitSniffer} as component
+     *
+     * @param hackItInjector {@link Injector} instance that will be use by
+     *                      {@link HackitSniffer} as component
+     *
+     * @param actorFunction {@link Actor} instance that will be use by
+     *                      {@link HackitSniffer} as component
+     *
+     * @param shipper {@link Shipper} instance that will be use by
+     *                {@link HackitSniffer} as component
+     *
+     * @param hackItSniff {@link Sniff} instance that will be use by
+     *                 {@link HackitSniffer} as component
+     *
+     * @param hackItCloner {@link Cloner} instance that will be use by
+     *                      {@link HackitSniffer} as component
      */
     //TODO: it may private, because need to be executed just at the creation moment
     public HackitSniffer(
@@ -119,9 +131,13 @@ HackitSniffer<
     }
 
     /**
-     * apply contains the logic that need to be executed at each tuple that is process by the main pipeline,
+     * apply contains the logic that need to be executed at each tuple that is
+     * process by the main pipeline,
      * <ol>
-     *     <li>If is the first exection the function perform the connection between the sidecar and the main pipeline</li>
+     *     <li>
+     *         If is the first exection the function perform the connection
+     *         between the sidecar and the main pipeline
+     *     </li>
      *     <li>Validate if the tuple need to be sniffed</li>
      *     <li>
      *         <ol>
@@ -157,56 +173,68 @@ HackitSniffer<
     }
 
     /**
-     * set {@link Injector} instance that will be use by {@link HackitSniffer} as component
+     * set {@link Injector} instance that will be use by {@link HackitSniffer}
+     * as component
      *
      * @param hackItInjector {@link Injector} instance
      * @return self instance of the {@link HackitSniffer}
      */
-    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj> setHackItInjector(Injector<HackitTuple<K, T>> hackItInjector) {
+    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj>
+            setHackItInjector(Injector<HackitTuple<K, T>> hackItInjector) {
         this.hackItInjector = hackItInjector;
         return this;
     }
 
     /**
-     * set {@link Actor} instance that will be use by {@link HackitSniffer} as component
+     * set {@link Actor} instance that will be use by {@link HackitSniffer}
+     * as component
      *
      * @param actorFunction {@link Actor} instance
      * @return self instance of the {@link HackitSniffer}
      */
-    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj> setActorFunction(Actor<HackitTuple<K, T>> actorFunction) {
+    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj>
+                    setActorFunction(Actor<HackitTuple<K, T>> actorFunction) {
         this.actorFunction = actorFunction;
         return this;
     }
 
     /**
-     * set {@link Shipper} instance that will be use by {@link HackitSniffer} as component
+     * set {@link Shipper} instance that will be use by {@link HackitSniffer}
+     * as component
      *
      * @param shipper {@link Shipper} instance
      * @return self instance of the {@link HackitSniffer}
      */
-    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj> setShipper(Shipper<HackitTuple<K, T>, SentType, SenderObj, ReceiverObj> shipper) {
+    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj>
+            setShipper(
+                Shipper<HackitTuple<K, T>, SentType, SenderObj, ReceiverObj> shipper
+    ) {
         this.shipper = shipper;
         return this;
     }
 
     /**
-     * set {@link Sniff} instance that will be use by {@link HackitSniffer} as component
+     * set {@link Sniff} instance that will be use by {@link HackitSniffer}
+     * as component
      *
      * @param hackItSniff {@link Sniff} instance
      * @return self instance of the {@link HackitSniffer}
      */
-    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj> setHackItSniff(Sniff<HackitTuple<K, T>> hackItSniff) {
+    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj>
+                        setHackItSniff(Sniff<HackitTuple<K, T>> hackItSniff) {
         this.hackItSniff = hackItSniff;
         return this;
     }
 
     /**
-     * set {@link Cloner} instance that will be use by {@link HackitSniffer} as component
+     * set {@link Cloner} instance that will be use by {@link HackitSniffer}
+     * as component
      *
      * @param hackItCloner {@link Cloner} instance
      * @return self instance of the {@link HackitSniffer}
      */
-    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj> setHackItCloner(Cloner<HackitTuple<K, T>, SentType> hackItCloner) {
+    public HackitSniffer<K, T, SentType, SenderObj, ReceiverObj>
+            setHackItCloner(Cloner<HackitTuple<K, T>, SentType> hackItCloner) {
         this.hackItCloner = hackItCloner;
         return this;
     }

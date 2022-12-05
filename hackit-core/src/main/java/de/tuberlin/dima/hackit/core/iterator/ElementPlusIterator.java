@@ -22,8 +22,8 @@ import java.util.Iterator;
 /**
  * ElementPlusIterator extends from {@link Iterator}.
  *
- * ElementPlusIterator add one unique element to a know {@link Iterator}, this unique element
- * it will be consumed first.
+ * ElementPlusIterator add one unique element to a know {@link Iterator},
+ * this unique element it will be consumed first.
  *
  * @param <T> type of the element of the iterator
  */

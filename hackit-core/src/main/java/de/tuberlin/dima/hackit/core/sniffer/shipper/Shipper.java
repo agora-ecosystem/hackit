@@ -17,21 +17,25 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.shipper;
 
+import de.tuberlin.dima.hackit.core.sniffer.shipper.receiver.BufferReceiver;
 import de.tuberlin.dima.hackit.core.sniffer.shipper.receiver.Receiver;
 import de.tuberlin.dima.hackit.core.sniffer.shipper.sender.Sender;
 import java.io.Serializable;
 import java.util.Iterator;
 
 /**
- * Shipper is the component that it handle the reception and emision of the message from the main pipeline and sidecar
- * pipeline to enable a smoothly connection between them.
+ * Shipper is the component that it handle the reception and emision of the
+ * message from the main pipeline and sidecar pipeline to enable a smooth
+ * connection between them.
  *
  * @param <T_IN> type of the tuple that it come from the sidecar to the main pipeline
  * @param <T_OUT> type of the tuple that it go from the main to sidecar pipeline
  * @param <SenderObj> type of {@link Sender} that the shipper will use
  * @param <ReceiverObj> type of {@link Receiver} that the shipper will use
  */
-public abstract class Shipper<T_IN, T_OUT, SenderObj extends Sender<T_OUT>, ReceiverObj extends Receiver<T_IN>> implements Iterator<T_IN>, Serializable {
+public abstract class Shipper<T_IN, T_OUT, SenderObj
+    extends Sender<T_OUT>, ReceiverObj extends Receiver<T_IN>>
+    implements Iterator<T_IN>, Serializable {
 
     /**
      * <code>sender_instance</code> instance that have {@link Sender} implementation
@@ -44,23 +48,24 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj extends Sender<T_OUT>, Rece
     protected Receiver receiver_instance;
 
     /**
-     * Generate an instance of the {@link Sender}, it could be take it by configurations
+     * Generate an instance of the {@link Sender}, it could be takes it by configurations
      *
      * @return {@link Sender} instance
      */
     protected abstract Sender createSenderInstance();
 
     /**
-     * Generate an instance of the {@link Receiver}, it could be take it by configurations
+     * Generate an instance of the {@link Receiver}, it could be takes it
+     * by configurations
      *
      * @return {@link Receiver} instance
      */
     protected abstract Receiver createReceiverInstance();
 
     /**
-     * Connect with the a Message queue service and send the message
+     * Connect with the Message queue service and send the message
      *
-     * @param value is the element that it will be send out form the main pipeline
+     * @param value is the element that it will be sent out form the main pipeline
      */
     public void publish(T_OUT value){
         if(this.sender_instance == null){
@@ -87,7 +92,8 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj extends Sender<T_OUT>, Rece
 
     /**
      * @see #subscribeAsProducer(String...)
-     * @param metatopic If the metatopic is different to the Default, need to be provided here
+     * @param metatopic If the metatopic is different to the Default, need
+     *                  to be provided here
      */
     public void subscribeAsProducer(String metatopic, String... topic){
         this.subscribeAsProducer();
@@ -125,7 +131,8 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj extends Sender<T_OUT>, Rece
 
     /**
      * @see #subscribeAsProducer(String...)
-     * @param metatopic If the metatopic is different to the Default, need to be provided here
+     * @param metatopic If the metatopic is different to the Default, need
+     *                  to be provided here
      */
     public void subscribeAsConsumer(String metatopic, String... topic){
         this.subscribeAsConsumer();
@@ -160,7 +167,7 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj extends Sender<T_OUT>, Rece
     /**
      * Get the last elements received to be injected on the main pipeline.
      *
-     * @return {@link Iterator} with the last element on the {@link org.apache.wayang.plugin.hackit.core.sniffer.shipper.receiver.BufferReceiver}
+     * @return {@link Iterator} with the last element on the {@link BufferReceiver}
      */
     public Iterator<T_IN> getNexts(){
         if( this.receiver_instance == null){

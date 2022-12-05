@@ -17,21 +17,25 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.action.ActionGroup;
+import de.tuberlin.dima.hackit.core.sniffer.HackitSniffer;
+import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
+import de.tuberlin.dima.hackit.core.tagger.TaggerFunction;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.apache.wayang.plugin.hackit.core.action.ActionGroup;
-import org.apache.wayang.plugin.hackit.core.tagger.TaggerFunction;
 
 /**
- * HackitTag extend from {@link ActionGroup} becuase is the element that allows to create
- * an element that contains the flags for the {@link org.apache.wayang.plugin.hackit.core.tagger.HackitTagger}
- * and {@link org.apache.wayang.plugin.hackit.core.sniffer.HackitSniffer} could perform the right logic
- * to {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple} that have the tag
+ * HackitTag extend from {@link ActionGroup} becuase is the element that allows
+ * to create an element that contains the flags for the {@link HackitTagger} and
+ * {@link HackitSniffer} could perform the right logic to {@link HackitTuple}
+ * that have the tag
  *
- * HachitTag implements {@link Serializable} because the element could be send it out.
+ * HachitTag implements {@link Serializable} because the element could be
+ * sent it out.
  */
 public abstract class HackitTag implements Serializable, ActionGroup {
 

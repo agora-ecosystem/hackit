@@ -18,7 +18,8 @@
 package de.tuberlin.dima.hackit.core.action;
 
 /**
- * Skip is the {@link Action} that helps to filter element either in a typical process or  with the external debugger
+ * Skip is the {@link Action} that helps to filter element either in a typical
+ * process or with the external debugger
  */
 public interface Skip extends Action{
 

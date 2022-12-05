@@ -17,15 +17,17 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * Display is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
+ * Display is the {@link HackitTag} that identify the {@link HackitTuple}
  * as an element that need to be sent it out to just print the values
  */
 public class DisplayTag extends HackitTag  {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static DisplayTag seed = null;
 

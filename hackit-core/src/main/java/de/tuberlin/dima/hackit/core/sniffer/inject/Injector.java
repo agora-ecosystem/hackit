@@ -17,12 +17,13 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.inject;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 import java.util.Iterator;
 
 /**
- * Injector is the component on the Sniffer that it get looking to get a {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
- * form outside and added on the current process
+ * Injector is the component on the Sniffer that it get looking to get a
+ * {@link HackitTuple} form outside and added on the current process
  *
  * @param <T> type of the tuple that need to be process
  */

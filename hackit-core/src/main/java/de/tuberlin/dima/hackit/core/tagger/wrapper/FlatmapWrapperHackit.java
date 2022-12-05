@@ -17,17 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tagger.wrapper;
 
+import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FlatMapTemplate;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
 import java.util.Iterator;
-import org.apache.wayang.plugin.hackit.core.tagger.HackitTagger;
-import org.apache.wayang.plugin.hackit.core.tagger.wrapper.template.FlatMapTemplate;
-import org.apache.wayang.plugin.hackit.core.tuple.HackitTuple;
 
 /**
- * FlatmapWrapperHackit is an implementation of {@link FlatMapTemplate} where Hackit manage the logic
- * before and after of tagging process, also it perform the unwrap of the tuple to be handle by the
- * original function
+ * FlatmapWrapperHackit is an implementation of {@link FlatMapTemplate} where
+ * Hackit manage the logic before and after of tagging process, also it perform
+ * to unwrap of the tuple to be handles by the original function
  *
- * @param <IDType> Type of {@link org.apache.wayang.plugin.hackit.core.tuple.header.Header} key of the {@link HackitTuple}
+ * @param <IDType> Type of {@link Header} key of the {@link HackitTuple}
  * @param <I> Input Type of the original Tuple
  * @param <O> Output Type after the perform the Function
  */

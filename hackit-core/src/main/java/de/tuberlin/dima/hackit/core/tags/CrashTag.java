@@ -17,15 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * CrashTag is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple} that
- * produce and exception that goes from UDF context and could make that the process stop.
+ * CrashTag is the {@link HackitTag} that identify the {@link HackitTuple} that
+ * produce and exception that goes from UDF context and could make that the
+ * process stop.
  */
 public class CrashTag extends HackitTag {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static CrashTag seed = null;
 

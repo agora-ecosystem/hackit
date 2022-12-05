@@ -17,36 +17,39 @@
  */
 package de.tuberlin.dima.hackit.core.tuple;
 
+import de.tuberlin.dima.hackit.core.action.Action;
+import de.tuberlin.dima.hackit.core.action.ActionGroup;
+import de.tuberlin.dima.hackit.core.tags.HackitTag;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
+import de.tuberlin.dima.hackit.core.tuple.header.HeaderBuilder;
 import java.io.Serializable;
 import java.util.Iterator;
-import org.apache.wayang.plugin.hackit.core.action.ActionGroup;
-import org.apache.wayang.plugin.hackit.core.tags.HackitTag;
-import org.apache.wayang.plugin.hackit.core.tuple.header.Header;
-import org.apache.wayang.plugin.hackit.core.tuple.header.HeaderBuilder;
 
 /**
- * HackitTuple is the base of Hackit because is the basic structure where the needed elements are added
- * to enable the execution of the logic in the internal pipeline of hackit
+ * HackitTuple is the base of Hackit because is the basic structure where the
+ * needed elements are added to enable the execution of the logic in the
+ * internal pipeline of hackit
  *
- * HackitTuple implements {@link Serializable} because the HackitTuple and the <code>T</code> will sent
- * out or part of the suffle process
+ * HackitTuple implements {@link Serializable} because the HackitTuple and
+ * the <code>T</code> will sent out or part of the suffle process
  *
- * HackitTuple implements {@link ActionGroup} because it could have any {@link org.apache.wayang.plugin.hackit.core.action.Action}
- * to perform, and is easy to validate at runtime what are the operation that need to be performed
+ * HackitTuple implements {@link ActionGroup} because it could have any
+ * {@link Action} to perform, and is easy to validate at runtime what are the
+ * operation that need to be performed
  *
  * @param <K> type of the key that will use as indentifier on the HackitTuple
- * @param <T> type of the element that it will be wrapper inside of the HackitTuple
+ * @param <T> type of the element that it will be wrapper inside the HackitTuple
  */
 public class HackitTuple<K, T> implements Serializable, ActionGroup {
 
     /**
-     * BUILDER is the {@link HeaderBuilder} that produce the identifier on the process
-     * of construction the new {@link Header}
+     * BUILDER is the {@link HeaderBuilder} that produce the identifier on
+     * the process of construction the new {@link Header}
      */
     private static HeaderBuilder BUILDER;
 
     /**
-     * header is an {@link Header}, this help to save relevant meta data of the tuple
+     * header is an {@link Header}, this help to save relevant tuple metadata
      */
     private Header<K> header;
 
@@ -56,11 +59,12 @@ public class HackitTuple<K, T> implements Serializable, ActionGroup {
     private T value;
 
     /**
-     * this static create the {@link HeaderBuilder} that will be use during the process
-     * of geneating the {@link Header}
+     * this static create the {@link HeaderBuilder} that will be use during
+     * the process of geneating the {@link Header}
      */
     static {
-        //TODO: the generation of the HeaderBuilder need to be done by configuration and using maybe a Dependency Inyection
+        //TODO: the generation of the HeaderBuilder need to be done by
+        //      configuration and using maybe a Dependency Inyection
         BUILDER = new HeaderBuilder();
     }
 
@@ -75,7 +79,8 @@ public class HackitTuple<K, T> implements Serializable, ActionGroup {
     }
 
     /**
-     * Construct where the header could be provided an not use the default {@link HeaderBuilder}
+     * Construct where the header could be provided not use the
+     * default {@link HeaderBuilder}
      *
      * @param header {@link Header} that will be save the relevant metadata
      * @param value that it will wrapper by the {@link HackitTuple}
@@ -122,7 +127,9 @@ public class HackitTuple<K, T> implements Serializable, ActionGroup {
     }
 
     /**
-     * get a {@link Iterator} of the currents {@link HackitTag} that are inside of the {@link Header}
+     * get a {@link Iterator} of the currents {@link HackitTag} that are
+     * inside of the {@link Header}
+     *
      * @return {@link Iterator} of tags
      */
     public Iterator<HackitTag> getTags(){

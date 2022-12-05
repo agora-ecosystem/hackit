@@ -18,7 +18,8 @@
 
 package de.tuberlin.dima.hackit.core.sniffer.sniff;
 
-import org.apache.wayang.plugin.hackit.core.tags.HackitTag;
+
+import de.tuberlin.dima.hackit.core.tags.HackitTag;
 
 /**
  * TODO validate if is correct implementation
@@ -45,7 +46,10 @@ public class SingleTagToSniff implements Sniff {
      */
     public void addTag2sniff(HackitTag tag) {
         if(this.tags2sniff != null){
-            throw new RuntimeException("The SingleTagToSniff already got the tag, if you need more of one tag use CollectionTagsToSniff class");
+            throw new RuntimeException(
+                "The SingleTagToSniff already got the tag, if you need "
+                    + "more of one tag use CollectionTagsToSniff class"
+            );
         }
         this.tags2sniff = tag;
     }

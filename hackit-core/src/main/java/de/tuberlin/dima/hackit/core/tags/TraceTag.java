@@ -17,15 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * DebugTag is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
- * as an element which will be identifier and also add the timestamp to be enable to follow it
+ * DebugTag is the {@link HackitTag} that identify the {@link HackitTuple}
+ * as an element which will be identifier and also add the timestamp to be
+ * enables to follow it
  */
 public class TraceTag extends HackitTag  {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static TraceTag seed = null;
 

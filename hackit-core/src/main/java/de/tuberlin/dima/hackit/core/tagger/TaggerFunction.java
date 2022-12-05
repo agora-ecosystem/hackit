@@ -18,7 +18,8 @@
 package de.tuberlin.dima.hackit.core.tagger;
 
 /**
- * TaggerFunction is the template for the function that will be use inside of {@link HackitTagger}
+ * TaggerFunction is the template for the function that will be use inside
+ * of {@link HackitTagger}
  *
  * @param <T> output type of the execution
  */

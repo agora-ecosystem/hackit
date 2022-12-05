@@ -17,12 +17,14 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.shipper.receiver;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 import java.util.Iterator;
 
 /**
- * Receiver is the component that handle the connection with the side car, and get
- * external elements, this can be instructions to perform or new {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
+ * Receiver is the component that handle the connection with the side car,
+ * and get external elements, this can be instructions to perform or new
+ * {@link HackitTuple}
  *
  * @param <T> Type of received elements
  */
@@ -39,7 +41,8 @@ public abstract class Receiver<T> implements Serializable {
     public abstract void init();
 
     /**
-     * Provide the newest elements received, either the process {@link #init()} or the previous call of {@link #getElements()}
+     * Provide the newest elements received, either the process {@link #init()}
+     * or the previous call of {@link #getElements()}
      *
      * @return {@link Iterator} with the elements
      */

@@ -17,13 +17,13 @@
  */
 package de.tuberlin.dima.hackit.core.iterator;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.util.Iterator;
 import java.util.function.Function;
-import org.apache.wayang.plugin.hackit.core.tuple.HackitTuple;
 
 /**
- * HackitIterator extends {@link FunctionIterator} and provides an signature for the conversion of
- * the tuples into a {@link HackitTuple} during they process.
+ * HackitIterator extends {@link FunctionIterator} and provides a signature for
+ * the conversion of the tuples into a {@link HackitTuple} during they process.
  *
  * @param <K> type of the key on the {@link HackitTuple}
  * @param <T> type of the element that it contains the {@link HackitTuple}
@@ -32,7 +32,7 @@ public class HackitIterator<K, T> extends FunctionIterator<T, HackitTuple<K, T>>
 
     /**
      * default construct
-     * @param base {@link Iterator} that element will be wrapper inside of a {@link HackitTuple}
+     * @param base {@link Iterator} that element will be wrap a {@link HackitTuple}
      * @param function it a {@link Function} that convert the the {@link HackitTuple}
      */
     public HackitIterator(Iterator<T> base, Function<T, HackitTuple<K, T>> function) {

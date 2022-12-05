@@ -17,16 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tagger.wrapper;
 
-import org.apache.wayang.plugin.hackit.core.tagger.HackitTagger;
-import org.apache.wayang.plugin.hackit.core.tagger.wrapper.template.FunctionTemplate;
-import org.apache.wayang.plugin.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FunctionTemplate;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.tuple.header.Header;
+
 
 /**
- * FunctionWrapperHackit is an implementation of {@link FunctionTemplate} where Hackit manage the logic
- * before and after of tagging process, also it perform the unwrap of the tuple to be handle by the
- * original function
+ * FunctionWrapperHackit is an implementation of {@link FunctionTemplate} where
+ * Hackit manage the logic before and after of tagging process, also it perform
+ * to unwrap of the tuple to be handled by the original function
  *
- * @param <IDType> Type of {@link org.apache.wayang.plugin.hackit.core.tuple.header.Header} key of the {@link HackitTuple}
+ * @param <IDType> Type of {@link Header} key of the {@link HackitTuple}
  * @param <I> Input Type of the original Tuple
  * @param <O> Output Type after the perform the Function
  */

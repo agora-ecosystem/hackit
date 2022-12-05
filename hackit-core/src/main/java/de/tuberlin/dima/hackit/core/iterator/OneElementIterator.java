@@ -23,8 +23,9 @@ import java.util.NoSuchElementException;
 /**
  * OneElementIterator implements {@link Iterator} and {@link Iterable}
  *
- * OneElementIterator will contains just one element, but that element need to be treated as
- * Iterator, this class allow handler all the functionality that are related to that.
+ * OneElementIterator will contain just one element, but that element need to
+ * be treated as {@Link Iterator}, this class allow handler all the functionality
+ * that are related to that.
  *
  * @param <T> type of the element
  */
@@ -102,8 +103,8 @@ public class OneElementIterator<T> implements Iterator<T>, Iterable<T>{
     }
 
     /**
-     * reset the Iterator if is needed, because the iterator it just one element, then is possible to do several
-     * full iteration on top of the element.
+     * reset the Iterator if is needed, because the iterator it just one element,
+     * then is possible to do several full iteration on top of the element.
      */
     public void reset() {
         this.beforeFirst = true;

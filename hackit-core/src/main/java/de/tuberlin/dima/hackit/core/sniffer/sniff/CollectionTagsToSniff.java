@@ -18,9 +18,10 @@
 
 package de.tuberlin.dima.hackit.core.sniffer.sniff;
 
+import de.tuberlin.dima.hackit.core.tags.HackitTag;
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.wayang.plugin.hackit.core.tags.HackitTag;
+
 
 /**
  * TODO validate if is correct implementation

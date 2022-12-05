@@ -19,7 +19,8 @@ package de.tuberlin.dima.hackit.core.action;
 
 
 /**
- * ActionGroup is an aggregation of the basic {@link Action}'s that Hackit had as predefined behaviour.
+ * ActionGroup is an aggregation of the basic {@link Action}'s that Hackit had
+ * as predefined behaviour.
  *
  * The predefined Action's currently are:
  * <ul>

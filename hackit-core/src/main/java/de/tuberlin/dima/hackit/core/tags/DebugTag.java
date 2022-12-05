@@ -17,15 +17,18 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+
 /**
- * DebugTag is the {@link HackitTag} that identify the {@link org.apache.wayang.plugin.hackit.core.tuple.HackitTuple}
- * as an element that need to capture the timestamp and send it out to analyse the values
+ * DebugTag is the {@link HackitTag} that identify the {@link HackitTuple}
+ * as an element that need to capture the timestamp and send it out to
+ * analyse the values
  */
 public class DebugTag extends HackitTag  {
 
     /**
-     * seed is the element that allow to have small overhead in memory, is like use
-     * singleton.
+     * seed is the element that allow to have small overhead in memory,
+     * is like use singleton.
      */
     private static DebugTag seed = null;
 
