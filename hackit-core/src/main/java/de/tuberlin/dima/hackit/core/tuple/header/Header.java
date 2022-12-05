@@ -22,10 +22,10 @@ import de.tuberlin.dima.hackit.core.action.ActionGroup;
 import de.tuberlin.dima.hackit.core.tags.HackitTag;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -50,7 +50,7 @@ public abstract class Header<K> implements Serializable, ActionGroup {
      * tags added to the header, this describes some action that need to
      * be apply to the {@link HackitTuple}
      */
-    private List<HackitTag> tags;
+    private Set<HackitTag> tags;
 
     /**
      * during the process of adding news {@link HackitTag} could add a new
@@ -125,13 +125,14 @@ public abstract class Header<K> implements Serializable, ActionGroup {
      * @param tag {@link HackitTag}
      */
     public void addTag(HackitTag tag){
-        //TODO: could be better to use an Set because it just saving uniques elements
         if(this.tags == null){
-            this.tags = new ArrayList<>();
+            this.tags = new HashSet<>();
+        }
+        if(this.tags.contains(tag)){
+           return;
         }
         this.tags.add(tag);
         //update all the possible actions on the {@link ActionGroup}
-        //TODO: just execute this action when the element is inserted the first time
         updateActionVector(tag);
     }
 
@@ -155,8 +156,10 @@ public abstract class Header<K> implements Serializable, ActionGroup {
      * @return {@link Iterator} with the current {@link HackitTag}'s
      */
     public Iterator<HackitTag> iterate(){
-        //TODO: maybe is need to add the option of empty
         if(this.tags == null){
+            return Collections.emptyIterator();
+        }
+        if(this.tags.size() == 0){
             return Collections.emptyIterator();
         }
         return this.tags.iterator();
@@ -181,11 +184,15 @@ public abstract class Header<K> implements Serializable, ActionGroup {
 
     @Override
     public String toString() {
-        //TODO: maybe is better to change to String.format
-        return "HackItTupleHeader{" +
-                "id=" + id +
-                ", child=" + child +
-                '}';
+        return "Header{" +
+            "id=" + id +
+            ", child=" + child +
+            ", tags=" + tags +
+            ", has_callback_tag=" + has_callback_tag +
+            ", has_skip_tag=" + has_skip_tag +
+            ", has_sendout_tag=" + has_sendout_tag +
+            ", has_haltjob_tag=" + has_haltjob_tag +
+            '}';
     }
 
     /**

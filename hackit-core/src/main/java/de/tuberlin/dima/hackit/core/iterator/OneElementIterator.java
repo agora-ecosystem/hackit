@@ -61,7 +61,7 @@ public class OneElementIterator<T> implements Iterator<T>, Iterable<T>{
     }
 
     /**
-     * Construct that allows indicate the option of remove the object
+     * Construct that allows to indicate the option of remove the object
      *
      * @param object element that will be process
      * @param removeAllowed indicate if the element could be removed
