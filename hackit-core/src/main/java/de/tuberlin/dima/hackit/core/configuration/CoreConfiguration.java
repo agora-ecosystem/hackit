@@ -18,11 +18,38 @@ package de.tuberlin.dima.hackit.core.configuration;
 
 import de.tuberlin.dima.hackit.util.HackitConfiguration;
 
+/**
+ * CoreConfiguration is an instance of {@link HackitConfiguration}, this
+ * configuration is static
+ */
 public class CoreConfiguration extends HackitConfiguration {
 
+  /**
+   * Instance of CoreConfiguration
+   */
+  static private CoreConfiguration CONF;
+
+  /**
+   * Default Construct is private to be able of getting an instance is
+   * required to use the {@link CoreConfiguration#getInstance()}
+   */
+  private CoreConfiguration() {
+    super();
+  }
   @Override
   public String name() {
     return "hackit-core";
+  }
+
+  /**
+   * Get the instance of the CoreConfiguration
+   * @return
+   */
+  public static CoreConfiguration getInstance(){
+    if(CONF == null){
+      CONF = new CoreConfiguration();
+    }
+    return CONF;
   }
 
 }
