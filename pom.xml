@@ -256,5 +256,6 @@
 
   <modules>
     <module>hackit-core</module>
+    <module>shipper</module>
   </modules>
 </project>
