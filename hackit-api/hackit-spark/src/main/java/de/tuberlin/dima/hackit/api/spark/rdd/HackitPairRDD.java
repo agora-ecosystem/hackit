@@ -18,8 +18,6 @@ package de.tuberlin.dima.hackit.api.spark.rdd;
 
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import org.apache.spark.api.java.JavaPairRDD;
-import org.apache.spark.api.java.function.Function2;
-import scala.Tuple2;
 
 public class HackitPairRDD<K, KT, V>{
   private JavaPairRDD<KT, HackitTuple<K, V>> rdd;

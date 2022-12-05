@@ -20,7 +20,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
     <artifactId>hackit</artifactId>
-    <groupId>de.tuberlin.dima</groupId>
+    <groupId>io.github.agora-ecosystem</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>

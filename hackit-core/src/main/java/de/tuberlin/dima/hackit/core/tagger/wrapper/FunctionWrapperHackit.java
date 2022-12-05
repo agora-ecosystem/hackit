@@ -18,9 +18,9 @@
 package de.tuberlin.dima.hackit.core.tagger.wrapper;
 
 import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
-import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FunctionTemplate;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import de.tuberlin.dima.hackit.core.tuple.header.Header;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FunctionTemplate;
 
 
 /**

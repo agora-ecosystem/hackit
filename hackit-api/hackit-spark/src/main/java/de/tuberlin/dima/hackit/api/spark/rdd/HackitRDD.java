@@ -18,9 +18,7 @@ package de.tuberlin.dima.hackit.api.spark.rdd;
 
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
-import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.rdd.RDD;
 
 public class HackitRDD<K, T> {

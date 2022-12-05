@@ -17,8 +17,8 @@
  */
 package de.tuberlin.dima.hackit.core.tags;
 
-import de.tuberlin.dima.hackit.core.sniffer.HackitSniffer;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
+import de.tuberlin.dima.hackit.core.sniffer.HackitSniffer;
 
 /**
  * SkipTag is the {@link HackitTag} that identify the {@link HackitTuple}

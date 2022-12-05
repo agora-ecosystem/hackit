@@ -18,10 +18,10 @@
 package de.tuberlin.dima.hackit.core.tags;
 
 import de.tuberlin.dima.hackit.core.action.ActionGroup;
+import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import de.tuberlin.dima.hackit.core.sniffer.HackitSniffer;
 import de.tuberlin.dima.hackit.core.tagger.HackitTagger;
 import de.tuberlin.dima.hackit.core.tagger.TaggerFunction;
-import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;

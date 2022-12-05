@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
 
 
-  <groupId>de.tuberlin.dima</groupId>
+  <groupId>io.github.agora-ecosystem</groupId>
   <artifactId>hackit</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
@@ -48,15 +48,15 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:https://github.com/agora-ecosystem/hack-it</connection>
-    <developerConnection>scm:git:https://github.com/agora-ecosystem/hack-it</developerConnection>
-    <url>https://github.com/agora-ecosystem/hack-it</url>
+    <connection>scm:git:https://github.com/agora-ecosystem/hackit</connection>
+    <developerConnection>scm:git:https://github.com/agora-ecosystem/hackit</developerConnection>
+    <url>https://github.com/agora-ecosystem/hackit</url>
     <tag>hackit-core-0.0.1</tag>
   </scm>
 
   <issueManagement>
     <system>Github Issues</system>
-    <url>https://github.com//agora-ecosystem/hack-it/issues/</url>
+    <url>https://github.com//agora-ecosystem/hackit/issues/</url>
   </issueManagement>
 
   <properties>

@@ -17,10 +17,10 @@
  */
 package de.tuberlin.dima.hackit.core.tagger;
 
-import de.tuberlin.dima.hackit.core.iterator.HackitIterator;
 import de.tuberlin.dima.hackit.core.tags.HackitTag;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import de.tuberlin.dima.hackit.core.tuple.header.Header;
+import de.tuberlin.dima.hackit.core.iterator.HackitIterator;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
