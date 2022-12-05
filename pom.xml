@@ -259,6 +259,6 @@
     <module>hackit-shipper</module>
     <module>hackit-util</module>
     <module>hackit-api</module>
-    <module>hackit-api/hackit-wayang</module>
+    <module>hackit-example</module>
   </modules>
 </project>
