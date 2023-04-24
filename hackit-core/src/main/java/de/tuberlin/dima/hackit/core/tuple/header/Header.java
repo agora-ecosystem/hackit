@@ -41,6 +41,11 @@ public abstract class Header<K> implements Serializable, ActionGroup {
     private K id;
 
     /**
+     * father indicate the number of the father that the current header is from
+     */
+    private Set<K> father;
+
+    /**
      * child indicate the number of the child that the current header is from the
      * original {@link HackitTuple} and they share the same identifier <code>id</code>
      */
@@ -226,5 +231,19 @@ public abstract class Header<K> implements Serializable, ActionGroup {
     @Override
     public boolean isSkip() {
         return this.has_skip_tag;
+    }
+
+    /**
+     * Add a new father identifier to the current header
+     *
+     * @param fatherID is the new father identifier
+     * @return the current header
+     */
+    public Header<K> addFather(K fatherID){
+        if( this.father == null ){
+            this.father = new HashSet<>();
+        }
+        this.father.add(fatherID);
+        return this;
     }
 }

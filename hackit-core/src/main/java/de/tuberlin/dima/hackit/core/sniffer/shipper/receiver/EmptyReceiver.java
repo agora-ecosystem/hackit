@@ -26,7 +26,7 @@ import java.util.Iterator;
  *
  * @param <T> type of process data
  */
-public class EmptyReceiver<T> extends Receiver<T> {
+public class EmptyReceiver<T> implements Receiver<T> {
 
     @Override
     public void init() {}

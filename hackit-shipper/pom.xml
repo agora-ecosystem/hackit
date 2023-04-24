@@ -37,6 +37,6 @@
   </dependencies>
 
   <modules>
-    <module>hachit-shipper-kafka</module>
+    <module>hackit-shipper-kafka</module>
   </modules>
 </project>

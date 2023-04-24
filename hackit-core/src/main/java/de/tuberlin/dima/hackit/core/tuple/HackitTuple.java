@@ -165,4 +165,15 @@ public class HackitTuple<K, T> implements Serializable, ActionGroup {
     public boolean isSkip() {
         return this.getHeader().isSkip();
     }
+
+    /**
+     * add a {@link HackitTuple} as a child of the current {@link HackitTuple}
+     *
+     * @param father {@link HackitTuple} that will be added as child
+     * @return {@link HackitTuple} with the new child
+     */
+    public HackitTuple<K, T> addFather(K father) {
+        this.header.addFather(father);
+        return this;
+    }
 }

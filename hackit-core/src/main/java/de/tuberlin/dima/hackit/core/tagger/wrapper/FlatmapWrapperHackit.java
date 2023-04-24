@@ -52,7 +52,7 @@ public class FlatmapWrapperHackit<IDType, I, O>
 
 
     @Override
-    public Iterator<HackitTuple<IDType, O>> execute(HackitTuple<IDType, I> kiHackItTuple) {
+    public Iterator<HackitTuple<IDType, O>> execute(HackitTuple<IDType, I> kiHackItTuple) throws Exception {
         this.preTaggingTuple(kiHackItTuple);
         Iterator<O> result = this.function.execute(kiHackItTuple.getValue());
         return this.postTaggingTuple(kiHackItTuple, result);

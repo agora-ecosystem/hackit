@@ -38,5 +38,5 @@ public interface FlatMapTemplate<I, O> {
      * @param input element to transform
      * @return {@link Iterator} that contains the output's
      */
-    public Iterator<O> execute(I input);
+    public Iterator<O> execute(I input) throws Exception;
 }

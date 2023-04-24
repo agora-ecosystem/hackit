@@ -53,7 +53,7 @@ public class PredicateWrapperHackit<IDType, I>
     }
 
     @Override
-    public Boolean execute(HackitTuple<IDType, I> v1) {
+    public Boolean execute(HackitTuple<IDType, I> v1) throws Exception{
         this.preTaggingTuple(v1);
         Boolean result = this.function.execute(v1.getValue());
         this.postTaggingTuple(v1);

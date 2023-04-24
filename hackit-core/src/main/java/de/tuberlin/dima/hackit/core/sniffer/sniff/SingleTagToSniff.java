@@ -24,16 +24,17 @@ import de.tuberlin.dima.hackit.core.tags.HackitTag;
 /**
  * TODO validate if is correct implementation
  */
-public class SingleTagToSniff implements Sniff {
+public class SingleTagToSniff<T> implements Sniff<T> {
 
     /**
-     *
+     * Tag that needs to be sniffed
      */
     public HackitTag tags2sniff;
 
     /**
+     * Default constructor
      *
-     * @param tag
+     * @param tag to be sniffed
      * @return
      */
     public boolean sniff(HackitTag tag){
@@ -55,7 +56,7 @@ public class SingleTagToSniff implements Sniff {
     }
 
     @Override
-    public boolean sniff(Object input) {
+    public boolean sniff(T input) {
         return false;
     }
 }

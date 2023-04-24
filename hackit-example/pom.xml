@@ -27,5 +27,56 @@
 
   <artifactId>hackit-example</artifactId>
 
+  <properties>
+    <scala.majorVersion>2.12</scala.majorVersion>
+    <scala.minorVersion>15</scala.minorVersion>
+    <spark.version>3.3.1</spark.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.github.agora-ecosystem</groupId>
+      <artifactId>hackit-core</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.agora-ecosystem</groupId>
+      <artifactId>hackit-spark</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.github.agora-ecosystem</groupId>
+      <artifactId>hackit-wayang</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- Start Dependency of Spark-->
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.majorVersion}.${scala.minorVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${scala.majorVersion}</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+    <!-- End dependency of Spark-->
+
+
+    <dependency>
+      <groupId>org.apache.wayang</groupId>
+      <artifactId>wayang-api-scala-java_2.12</artifactId>
+      <version>0.6.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.wayang</groupId>
+      <artifactId>wayang-java</artifactId>
+      <version>0.6.0</version>
+    </dependency>
+
+  </dependencies>
 
 </project>

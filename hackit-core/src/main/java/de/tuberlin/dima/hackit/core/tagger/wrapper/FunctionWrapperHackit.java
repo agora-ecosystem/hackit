@@ -51,7 +51,7 @@ public class FunctionWrapperHackit <IDType, I, O>
     }
 
     @Override
-    public HackitTuple<IDType, O> execute(HackitTuple<IDType, I> v1) {
+    public HackitTuple<IDType, O> execute(HackitTuple<IDType, I> v1) throws Exception{
         this.preTaggingTuple(v1);
         O result = this.function.execute(v1.getValue());
         return this.postTaggingTuple(v1, result);

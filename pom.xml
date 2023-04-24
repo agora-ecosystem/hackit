@@ -260,5 +260,6 @@
     <module>hackit-util</module>
     <module>hackit-api</module>
     <module>hackit-example</module>
+    <module>hackit-server</module>
   </modules>
 </project>

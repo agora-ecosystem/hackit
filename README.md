@@ -7,25 +7,79 @@ The debugger for Big Data
 
 ## Introduction
 
-**TODO: add it **
-
+Hackit is a debugger for big data. It is a tool that allows developers to focus
+into the code that is causing the error. The debugger is based on the idea of
+using the data that is being processed to find the error. The system use the 
+paradigm of Tag-snif, the hackit contains all the elements that you most require
+to undestand the behaivor of your data.
 
 ## requirement
-**TODO: add it **
+- Java 11
+- Maven 3.6.3
+- Docker 20.10.7
 
 ## Build
-**TODO: add it **
+
+
+to build the project you require to have maven installed and run the following command
 
 ```bash
-TODO: Comand here 
+mvn clean package
 ```
 
-## Running Test
-
-**TODO: add it **
+to build the docker image you require to have docker installed and run the following command
 
 ```bash
-TODO: Comand here 
+cd hackit-server
+docker build -t hackit-server .
+```
+## Run
+
+To run the project you require to have docker installed and run the following command
+
+```bash
+docker run -p 8080:8080 hackit-server
+```
+
+## Usage
+
+To use the debugger you require to have a wayang application.
+
+### Hackit Application
+
+you can see the example of a hackit application in the folder hackit-example. To run the examples you will 
+require to run the following command
+
+```bash
+mvn clean install 
+```
+
+```bash
+mvn clean \
+    compile \
+    exec:java \
+    -Dexec.mainClass="de.tuberlin.dima.hackit.example.HackitExample[NAME_OF_THE_EXAMPLE]" \
+    -Dexec.cleanupDaemonThreads=false \
+    -pl hackit-example
+```
+
+#### Wayang Application
+```bash
+mvn clean \
+    compile \
+    exec:java \
+    -Dexec.mainClass="de.tuberlin.dima.hackit.example.HackitExampleWayang" \
+    -Dexec.cleanupDaemonThreads=false \
+    -pl hackit-example
+```
+#### Spark Application
+```bash
+mvn clean \
+    compile \
+    exec:java \
+    -Dexec.mainClass="de.tuberlin.dima.hackit.example.HackitExampleSpark" \
+    -Dexec.cleanupDaemonThreads=false \
+    -pl hackit-example
 ```
 
 

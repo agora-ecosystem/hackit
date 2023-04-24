@@ -64,6 +64,9 @@ public class ElementPlusIterator<T> implements Iterator<T> {
         if( ! this.element_consumed ){
             return true;
         }
+        if(this.iterator == null){
+            return false;
+        }
         return this.iterator.hasNext();
     }
 

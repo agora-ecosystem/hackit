@@ -17,9 +17,9 @@
  */
 package de.tuberlin.dima.hackit.core.sniffer.shipper;
 
-import de.tuberlin.dima.hackit.core.sniffer.shipper.receiver.BufferReceiver;
 import de.tuberlin.dima.hackit.core.sniffer.shipper.receiver.Receiver;
 import de.tuberlin.dima.hackit.core.sniffer.shipper.sender.Sender;
+
 import java.io.Serializable;
 import java.util.Iterator;
 
@@ -33,26 +33,39 @@ import java.util.Iterator;
  * @param <SenderObj> type of {@link Sender} that the shipper will use
  * @param <ReceiverObj> type of {@link Receiver} that the shipper will use
  */
-public abstract class Shipper<T_IN, T_OUT, SenderObj
-    extends Sender<T_OUT>, ReceiverObj extends Receiver<T_IN>>
+public abstract class Shipper<
+        T_IN,
+        T_OUT,
+        SenderObj extends Sender<T_OUT>,
+        ReceiverObj extends Receiver<T_IN>
+    >
     implements Iterator<T_IN>, Serializable {
 
     /**
      * <code>sender_instance</code> instance that have {@link Sender} implementation
      */
-    protected Sender sender_instance;
+    protected SenderObj sender_instance;
 
     /**
      * <code>receiver_instance</code> instance that have {@link Receiver} implementation
      */
-    protected Receiver receiver_instance;
+    protected ReceiverObj receiver_instance;
+
+    /**
+     * <code>current</code> is the current iterators that most get injected back into main pipeline
+     */
+    protected Iterator<T_IN> current;
+
+    public Shipper() {
+
+    }
 
     /**
      * Generate an instance of the {@link Sender}, it could be takes it by configurations
      *
      * @return {@link Sender} instance
      */
-    protected abstract Sender createSenderInstance();
+    protected abstract SenderObj createSenderInstance();
 
     /**
      * Generate an instance of the {@link Receiver}, it could be takes it
@@ -60,7 +73,7 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj
      *
      * @return {@link Receiver} instance
      */
-    protected abstract Receiver createReceiverInstance();
+    protected abstract ReceiverObj createReceiverInstance();
 
     /**
      * Connect with the Message queue service and send the message
@@ -95,11 +108,12 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj
      * @param metatopic If the metatopic is different to the Default, need
      *                  to be provided here
      */
-    public void subscribeAsProducer(String metatopic, String... topic){
+    public void subscribeAsProducer(String metatopic, String[] topic){
         this.subscribeAsProducer();
-        ((PSProtocol)this.sender_instance)
-                .addExchange(metatopic)
-                .addTopic(topic)
+        PSProtocol protocol = (PSProtocol)this.sender_instance;
+        protocol
+            .addExchange(metatopic)
+            .addTopic(topic)
         ;
     }
 
@@ -126,7 +140,7 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj
      * @param topic list of topic where the consumer it will be consuming
      */
     public void subscribeAsConsumer(String... topic){
-        this.subscribeAsProducer("default", topic);
+        this.subscribeAsConsumer("default", topic);
     }
 
     /**
@@ -134,7 +148,7 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj
      * @param metatopic If the metatopic is different to the Default, need
      *                  to be provided here
      */
-    public void subscribeAsConsumer(String metatopic, String... topic){
+    public void subscribeAsConsumer(String metatopic, String[] topic){
         this.subscribeAsConsumer();
         ((PSProtocol)this.receiver_instance)
                 .addExchange(metatopic)
@@ -159,15 +173,37 @@ public abstract class Shipper<T_IN, T_OUT, SenderObj
     }
 
     @Override
-    public abstract boolean hasNext();
+    public boolean hasNext(){
+        boolean updated = false;
+        if( this.current == null ){
+            this.current = this.getNexts();
+            updated = true;
+        }
+
+        if (this.current == null){
+            return false;
+        }
+
+        if( this.current.hasNext() ){
+            return true;
+        }
+
+        if( updated ){
+            return false;
+        }
+        this.current = null;
+        return this.hasNext();
+    }
 
     @Override
-    public abstract T_IN next();
+    public T_IN next(){
+        return this.current.next();
+    }
 
     /**
      * Get the last elements received to be injected on the main pipeline.
      *
-     * @return {@link Iterator} with the last element on the {@link BufferReceiver}
+     * @return {@link Iterator} with the last element on the
      */
     public Iterator<T_IN> getNexts(){
         if( this.receiver_instance == null){

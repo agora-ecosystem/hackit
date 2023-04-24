@@ -17,6 +17,8 @@
  */
 package de.tuberlin.dima.hackit.core.tagger.wrapper.template;
 
+import java.io.Serializable;
+
 /**
  * FunctionTemplate is the template that provide the abstraction to work with
  * Transformation operations and also allows to wrap some function made by
@@ -25,7 +27,7 @@ package de.tuberlin.dima.hackit.core.tagger.wrapper.template;
  * @param <I> Input type of the original Function
  * @param <O> Output type of the original function
  */
-public interface FunctionTemplate<I, O> {
+public interface FunctionTemplate<I, O> extends Serializable {
 
     /**
      * Execute the logic over one element and generate as output <code>T</code>
@@ -33,5 +35,5 @@ public interface FunctionTemplate<I, O> {
      * @param input element to transform
      * @return <code>O</code> that is the transformation of the <code>input</code>
      */
-    public O execute(I input);
+    public O execute(I input) throws Exception;
 }

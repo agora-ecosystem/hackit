@@ -16,11 +16,34 @@
 
 package de.tuberlin.dima.hackit.api.spark.rdd;
 
+import de.tuberlin.dima.hackit.api.spark.function.PairFunctionWrapperHackit;
+import de.tuberlin.dima.hackit.api.spark.function.SparkSniffer;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.FlatmapWrapperHackit;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.FunctionWrapperHackit;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.PredicateWrapperHackit;
+import de.tuberlin.dima.hackit.core.tagger.wrapper.template.FlatMapTemplate;
+import de.tuberlin.dima.hackit.core.tags.HackitTag;
+import de.tuberlin.dima.hackit.core.tags.LogTag;
 import de.tuberlin.dima.hackit.core.tuple.HackitTuple;
 import org.apache.spark.api.java.JavaRDD;
+import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
+import org.apache.spark.api.java.function.FilterFunction;
+import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.rdd.RDD;
 
+import java.util.Iterator;
+import java.util.Properties;
+
+/**
+ * HackitRDD is the wrapper of the {@link JavaRDD} that will be used to
+ * execute the {@link de.tuberlin.dima.hackit.core.tagger.TaggerFunction}
+ * inside of the {@link HackitTag
+ * ger}
+ *
+ * @param <K> Key type of the {@link HackitTuple}
+ * @param <T> Value type of the {@link HackitTuple}
+ */
 public class HackitRDD<K, T> {
   private JavaRDD<HackitTuple<K, T>> rdd;
 
@@ -32,10 +55,9 @@ public class HackitRDD<K, T> {
    * Wrap the JavaRDD inside DebugRDD
    * */
   public static <K, T> HackitRDD<K, T> fromJavaRDD(JavaRDD<T> rdd){
-    HackitRDD<K, T> ktHackItRDD = new HackitRDD<K, T>(
+    return new HackitRDD<K, T>(
         rdd.map((Function<T, HackitTuple<K, T>>) HackitTuple::new)
     );
-    return ktHackItRDD;
   }
 
   /**
@@ -52,87 +74,97 @@ public class HackitRDD<K, T> {
     return this.rdd.map(hackit -> hackit.getValue());
   }
 
-  public static <K, T> HackitRDD<K, T> wrapDebugRDD(JavaRDD<T> rdd){
-    return HackitRDD.fromJavaRDD(rdd);
-  }
   // Common RDD functions
-//
-//  public HackitRDD<K, T> filter(Function<T, Boolean> f) {
-//    HackitRDD<K, T> ktHackItRDD = new HackitRDD<>(
-//        this.rdd.filter(
-//            (Function<HackitTuple<K, T>, Boolean>) new PredicateHackItTagger<K, T>(f).addPostTag(new LogTag())
-//        )
-//    );
-//    return ktHackItRDD;
-//  }
-//
-//  public <O> HackitRDD<K, O> map(Function<T, O> f){
-//    HackitRDD<K, O> ktHackItRDD = new HackitRDD<>(
-//        this.rdd.map(
-//            new FunctionHackItTagger<>(f)
-//        )
-//    );
-//    return ktHackItRDD;
-//  }
-//
-//  public <KO, O> HackitRDD<K, KO, O> mapToPair(
-//      PairFunction<T, KO, O> pairFunction){
-//    HackitRDD<K, KO, O> ktDebugRDD = new HackitRDD<>(
-//        this.rdd.mapToPair(
-//            new PairFunctionHackItTagger<>(pairFunction)
-//        )
-//    );
-//    return ktDebugRDD;
-//  }
-//
-//  public <KO, O> HackitRDD<K, O> flatMap(FlatMapFunction<T, O> flatMapFunction){
-//    HackitRDD<K, O> koHackItRDD = new HackitRDD<>(
-//        this.rdd.flatMap(
-//            new FlatMapFunctionHackItTagger<K, T, O>(
-//                flatMapFunction
-//            )
-//        )
-//    );
-//    return koHackItRDD;
-//  }
-//
-//  public HackitRDD<K, T> sniffer(){
-//    HackItSnifferSpark<Long, String, byte[], SenderMultiChannelRabbitMQ<byte[]>, ReceiverMultiChannelRabbitMQ<Long, String>> lala = new HackItSnifferSpark<Long, String, byte[], SenderMultiChannelRabbitMQ<byte[]>, ReceiverMultiChannelRabbitMQ<Long, String>>(
-//        new EmptyHackItInjector<>(),
-//        ele -> true,
-//        new HachitShipperDirectRabbitMQ(),
-//        ele -> true,
-//        new DefaultCloner<HackitTuple<Long, String>>()
-//    );
-//    return this.sniffer(lala);
-//  }
-//
-//  public HackitRDD<K, T> sniffer(HackItSnifferSpark hackItSniffer){
-//    return new HackitRDD<>(
-//        this.rdd.flatMap(
-//            hackItSniffer
-//        )
-//    );
-//  }
 
-    /*@Override
-    public <R> DebugRDD<R> map(Function<T, R> f) {
-        return null;
-    }
-    @Override
-    public <K2, V2> DebugRDD<K2, V2> mapToPair(PairFunction<T, K2, V2> f) {
-        return null;
-    }
-    @Override
-    public <U> DebugRDD<U> flatMap(FlatMapFunction<T, U> f) {
-        return null;
-    }
-    @Override
-    public <K2, V2> DebugRDD<K2, V2> flatMapToPair(PairFlatMapFunction<T, K2, V2> f) {
-        return null;
-    }
-    */
+  /**
+   * This function is used to filter the RDD
+   * */
+  public HackitRDD<K, T> filter(FilterFunction<T> f) {
 
+    PredicateWrapperHackit<K, T> func = (PredicateWrapperHackit<K, T>) new PredicateWrapperHackit<K, T>(f::call).addPostTag(new LogTag());
+
+    return new HackitRDD<>(
+        this.rdd.filter(
+                func::execute
+        )
+    );
+  }
+
+  /**
+   * This function is used to map the function to the RDD
+   * */
+  public <O> HackitRDD<K, O> map(Function<T, O> f){
+    FunctionWrapperHackit<K, T, O> func = new FunctionWrapperHackit<K, T, O>(f::call);
+
+    return new HackitRDD<>(
+        this.rdd.map(
+                func::execute
+        )
+    );
+  }
+
+
+  /**
+   * This function is used to map the function to the RDD
+   * */
+  public <KO, O> HackitPairRDD<K, KO, O> mapToPair(PairFunction<T, KO, O> pairFunction){
+
+    PairFunctionWrapperHackit<K, KO, T, O> pairFunctionWrapperHackit = new PairFunctionWrapperHackit<K, KO, T, O>(pairFunction::call);
+
+
+    return new HackitPairRDD<>(
+        this.rdd.mapToPair(
+            pairFunctionWrapperHackit::execute
+        )
+    );
+  }
+
+  /**
+   * apply the flatmap function to the RDD
+   * */
+  public <KO, O> HackitRDD<K, O> flatMap(FlatMapFunction<T, O> flatMapFunction){
+    FlatMapTemplate<T, O> flatMapTemplate = new FlatMapTemplate<T, O>(){
+      @Override
+      public Iterator<O> execute(T input) throws Exception {
+        return flatMapFunction.call(input);
+      }
+    };
+
+    FlatmapWrapperHackit<K, T, O> flatmapWrapperHackit = new FlatmapWrapperHackit<K, T, O>(flatMapTemplate);
+
+    return new HackitRDD<>(
+        this.rdd.flatMap(
+            flatmapWrapperHackit::execute
+        )
+    );
+  }
+
+  /**
+   * create the sniffer inside the pipeline
+   * */
+  public HackitRDD<K, T> sniffer(SparkSniffer<K, T> hackItSniffer){
+    return new HackitRDD<>(
+        this.rdd.flatMap(
+            hackItSniffer::apply
+        )
+    );
+  }
+
+  /**
+   * creates automatically the sniffer inside the pipeline
+   * */
+  public HackitRDD<K, T> addSniffer(){
+    Properties conf = new Properties();
+
+    //TODO add properties
+    SparkSniffer<K, T> sniffer = new SparkSniffer<K, T>(conf);
+    return this.sniffer(sniffer);
+  }
+
+
+  /**
+   * this function store the results into the text file
+   * */
   public void saveAsTextFile(String path) {
     this.toJavaRDD().saveAsTextFile(path);
   }

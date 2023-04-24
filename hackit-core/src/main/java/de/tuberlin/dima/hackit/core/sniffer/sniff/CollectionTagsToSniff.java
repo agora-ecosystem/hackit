@@ -26,7 +26,7 @@ import java.util.Set;
 /**
  * TODO validate if is correct implementation
  */
-public class CollectionTagsToSniff implements Sniff {
+public class CollectionTagsToSniff<T> implements Sniff<T> {
 
     /**
      *
@@ -58,7 +58,7 @@ public class CollectionTagsToSniff implements Sniff {
     }
 
     @Override
-    public boolean sniff(Object input) {
+    public boolean sniff(T input) {
         return false;
     }
 }
